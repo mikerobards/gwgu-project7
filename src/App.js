@@ -5,17 +5,42 @@ import foursquareAPI from './API';
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      venues: [],
+      markers: [],
+      center: [],
+      zoom: 11
+
+    }
+  }
   componentDidMount() {
     foursquareAPI.search({
       near: "Atlanta, GA",
       query: "pizza",
       limit: 10
-    }).then(results => console.log(results))
+    }).then(results => {
+      const { venues } = results.response;
+      const { center } = results.response.geocode.feature.geometry;
+      const markers = venues.map(venue => {
+        return {
+          lat: venue.location.lat,
+          lng: venue.location.lng,
+          isOpen: false,
+          isVisible: true
+        };
+      });
+      this.setState({ venues, center, markers });
+      console.log(results)
+    });
+
+
   }
   render() {
     return (
       <div className="App">
-        <Map />
+        <Map {...this.state} />
       </div>
     );
   }
