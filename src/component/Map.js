@@ -8,13 +8,19 @@ const MyMapComponent = withScriptjs(
     defaultZoom={9} zoom={props.zoom}
     defaultCenter={{ lat: 33.753746, lng: -84.386330 }}
     center={props.center}>
-    {props.markers && props.markers.filter(marker => marker.isVisible).map((marker, index) => (
-      <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} onClick={() => props.markerClick(marker)}>
-        {marker.isOpen && <InfoWindow>
-          <p>Hello</p>
-        </InfoWindow>}
+    {props.markers && props.markers.filter(marker => marker.isVisible).map((marker, index) => {
+      const venueInfo = props.venues.find(venue => venue.id === marker.id);
+      return (<Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} onClick={() => props.markerClick(marker)}>
+        {marker.isOpen && venueInfo.bestPhoto && (
+          <InfoWindow>
+            <React.Fragment>
+              <img src={`${venueInfo.bestPhoto.prefix}150x150${venueInfo.bestPhoto.suffix}`} alt= {"Venue"}/>
+              <p>{venueInfo.name}</p>
+            </React.Fragment>
+          </InfoWindow>)}
       </Marker>
-    ))}
+    );
+    })}
   </GoogleMap>
   ))
 );

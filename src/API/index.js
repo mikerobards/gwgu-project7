@@ -40,7 +40,7 @@ export default class foursquareAPI {
 	static search(urlPrams) {
 		return Helper.simpleFetch("/venues/search", "GET", urlPrams);
 	}
-	static getVenueDetail(VENUE_ID) {
+	static getVenueDetails(VENUE_ID) {
 		return Helper.simpleFetch(`/venues/${VENUE_ID}`, "GET");
 	}
 	static getVenuePhoto(VENUE_ID) {
