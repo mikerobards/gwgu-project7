@@ -11,10 +11,24 @@ class App extends Component {
       venues: [],
       markers: [],
       center: [],
-      zoom: 11
-
-    }
+      zoom: 12
+    };
   }
+  closeMarkers = () => {
+      const markers = this.state.markers.map(marker => {
+        marker.isOpen = false;
+        return marker;
+      });
+      this.setState({ markers: Object.assign(this.state.markers, markers) })
+  };
+
+  markerClick = marker => {
+    this.closeMarkers();
+    marker.isOpen = true;
+    this.setState({ markers: Object.assign(this.state.markers, marker) })
+  };
+
+
   componentDidMount() {
     foursquareAPI.search({
       near: "Atlanta, GA",
@@ -40,7 +54,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Map {...this.state} />
+        <Map {...this.state}
+         markerClick={this.markerClick}/>
       </div>
     );
   }
