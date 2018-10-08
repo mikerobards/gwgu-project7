@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Map from './component/Map';
 import foursquareAPI from './API';
 import Sidebar from './component/Sidebar';
+
 
 
 class App extends Component {
