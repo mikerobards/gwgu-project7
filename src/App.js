@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './component/Map';
 import foursquareAPI from './API';
+import Sidebar from './component/Sidebar';
 
 
 class App extends Component {
@@ -60,6 +61,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Sidebar />
         <Map {...this.state}
          markerClick={this.markerClick}/>
       </div>
