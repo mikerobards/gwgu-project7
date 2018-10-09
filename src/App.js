@@ -36,7 +36,8 @@ class App extends Component {
   };
 
   listItemClick = venue => {
-    console.log(venue);
+    const marker = this.state.markers.find(marker => marker.id === venue.id);
+    this.markerClick(marker);
   };
 
   componentDidMount() {
