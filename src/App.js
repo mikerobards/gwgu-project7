@@ -35,6 +35,9 @@ class App extends Component {
     });
   };
 
+  listItemClick = venue => {
+    console.log(venue);
+  };
 
   componentDidMount() {
     foursquareAPI.search({
@@ -56,15 +59,15 @@ class App extends Component {
       this.setState({ venues, center, markers });
       console.log(results)
     });
+  };
 
-
-  }
   render() {
     return (
       <div className="App">
-        <Sidebar {...this.state} />
+        <Sidebar {...this.state}
+          listItemClick={this.listItemClick} />
         <Map {...this.state}
-         markerClick={this.markerClick} />
+          markerClick={this.markerClick} />
       </div>
     );
   }
