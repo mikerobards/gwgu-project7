@@ -41,7 +41,7 @@ export default class Sidebar extends Component {
     return (<div className="sidebar">
       <input type={"search"} id={"search"} placeholder={"Search Venues Here!"} onChange={this.workChange} />
       <VenueList {...this.props}
-      venues={this.workFilterVenues}
+      venues={this.workFilterVenues()}
       listItemClick={this.props.listItemClick} />
     </div>);
   }

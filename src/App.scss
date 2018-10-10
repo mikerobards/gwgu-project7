@@ -6,7 +6,7 @@
   flex-flow: row nonwrap;
 
 .sidebar {
-  width: 25%;
+  max-width: 100%;
 
   #search {
     width: 100%;
