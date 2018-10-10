@@ -39,7 +39,8 @@ export default class Sidebar extends Component {
 
   render() {
     return (<div className="sidebar">
-      <input type={"search"} id={"search"} placeholder={"Search Venues Here!"} onChange={this.workChange} />
+      <h1>ATL Pizza Search!</h1>
+      <input type={"search"} id={"search"} placeholder={" Search Venues Here!"} onChange={this.workChange} />
       <VenueList {...this.props}
       venues={this.workFilterVenues()}
       listItemClick={this.props.listItemClick} />
